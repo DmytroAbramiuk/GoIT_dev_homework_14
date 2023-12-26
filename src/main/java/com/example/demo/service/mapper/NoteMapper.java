@@ -1,7 +1,5 @@
 package com.example.demo.service.mapper;
 
-import com.example.demo.controller.request.CreateNoteRequest;
-import com.example.demo.controller.request.UpdateNoteRequest;
 import com.example.demo.data.entity.Note;
 import com.example.demo.data.response.NoteResponse;
 import com.example.demo.service.dto.NoteDto;
@@ -54,26 +52,5 @@ public class NoteMapper {
         response.setTitle(dto.getTitle());
         response.setContent(dto.getContent());
         return response;
-    }
-
-    public List<NoteDto> requestsToNoteDtos(Collection<CreateNoteRequest> requests) {
-        return requests.stream()
-                .map(this::toNoteDto)
-                .collect(Collectors.toList());
-    }
-
-    public NoteDto toNoteDto(CreateNoteRequest request) {
-        NoteDto dto = new NoteDto();
-        dto.setTitle(request.getTitle());
-        dto.setContent(request.getContent());
-        return dto;
-    }
-
-    public NoteDto toNoteDto(UUID id, UpdateNoteRequest request) {
-        NoteDto dto = new NoteDto();
-        dto.setId(id);
-        dto.setTitle(request.getTitle());
-        dto.setContent(request.getContent());
-        return dto;
     }
 }
